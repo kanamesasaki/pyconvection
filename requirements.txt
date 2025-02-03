@@ -1,3 +1,4 @@
 pyfluids
 numpy
 matplotlib
+pandas
