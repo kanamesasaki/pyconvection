@@ -10,8 +10,8 @@ def atmosphere_pressure(altitude: np.ndarray) -> np.ndarray:
     Calculate the pressure at a given altitude.
     U.S. Standard Atmosphere 1976, Eq (33a, 33b)
 
-    :param altitude: Altitude [m] (float or numpy array)
-    :return: Pressure [Pa] (float or numpy array)
+    :param altitude: Altitude [m] (numpy array)
+    :return: Pressure [Pa] (numpy array)
     """
 
     altitude = np.array(altitude, dtype=float)

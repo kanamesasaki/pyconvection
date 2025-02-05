@@ -10,7 +10,9 @@ def vertical_plate(l: float, t_s: float, t_inf: float, fluid: FluidsList = Fluid
     :param l: Length of the plate [m]
     :param t_s: Surface temperature [℃]
     :param t_inf: Fluid temperature [℃]
+    :param fluid: Fluid type (pyfluids.FluidsList)
     :param pressure: Pressure [Pa]
+    :param g: Gravitational acceleration [m/s^2]
     :return: Heat transfer coefficient [W/m^2K]
     """
 
@@ -32,10 +34,13 @@ def horizontal_plate_up(area: float, perimeter: float, t_s: float, t_inf: float,
     """
     Calculate the heat transfer coefficient for natural convection on the top of a horizontal plate.
 
-    :param l: Length of the plate [m]
-    :param pressure: Pressure [Pa]
+    :param area: Area of the plate [m^2]
+    :param perimeter: Perimeter of the plate [m]
     :param t_s: Surface temperature [℃]
     :param t_inf: Fluid temperature [℃]
+    :param fluid: Fluid type (pyfluids.FluidsList)
+    :param pressure: Pressure [Pa]
+    :param g: Gravitational acceleration [m/s^2]
     :return: Heat transfer coefficient [W/m^2K]
     """
 
@@ -64,10 +69,13 @@ def horizontal_plate_down(area: float, perimeter: float, t_s: float, t_inf: floa
     """
     Calculate the heat transfer coefficient for natural convection on the bottom of a horizontal plate.
 
-    :param l: Length of the plate [m]
-    :param pressure: Pressure [Pa]
+    :param area: Area of the plate [m^2]
+    :param perimeter: Perimeter of the plate [m]
     :param t_s: Surface temperature [℃]
     :param t_inf: Fluid temperature [℃]
+    :param fluid: Fluid type (pyfluids.FluidsList)
+    :param pressure: Pressure [Pa]
+    :param g: Gravitational acceleration [m/s^2]
     :return: Heat transfer coefficient [W/m^2K]
     """
 
