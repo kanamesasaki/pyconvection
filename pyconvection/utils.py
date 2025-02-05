@@ -4,6 +4,7 @@ import warnings
 GRAVITY = 9.80665
 MOLAR_MASS = 0.0289644
 GAS_CONSTANT = 8.31447
+BOLTSZMANN_CONSTANT = 1.3806492e-23
 
 def atmosphere_pressure(altitude: np.ndarray) -> np.ndarray:
     """
@@ -145,3 +146,61 @@ def atmosphere_temperature(altitude: np.ndarray) -> np.ndarray:
         warnings.warn("Some of the altitude values are out of range!")
         
     return np.piecewise(altitude, conditions, functions)
+
+def knudsen_number(length: float, pressure: float, temperature: float, d: float = 3.64e-10) -> float:
+    """
+    Calculate the Knudsen number.
+
+    For the particle diameter, kinetic diameters can be used as a reference.
+    "Zeolite Molecular Sieves. Structure, Chemistry, And Use" by Donald W. Breck
+
+    He: 2.6e-10 m
+    H₂: 2.89e-10 m
+    Ne: 2.75e-10 m
+    Ar: 3.40e-10 m
+    O₂: 3.46e-10 m
+    N₂: 3.64e-10 m
+    Kr: 3.60e-10 m
+    Xe: 3.96e-10 m
+    NO: 3.17e-10 m
+    N₂O: 3.3e-10 m
+    CO: 3.76e-10 m
+    CO₂: 3.3e-10 m
+    Cl₂: 3.2e-10 m
+    Br₂: 3.5e-10 m
+    H₂O: 2.65e-10 m
+    NH₃: 2.6e-10 m
+    SO₂: 3.6e-10 m
+    CH₄: 3.8e-10 m
+    C₂H₂: 3.3e-10 m
+    C₂H₄: 3.9e-10 m
+    C₃H₈: 4.3e-10 m
+    n-C₄H₁₀: 4.3e-10 m
+    HCl: 3.2e-10 m
+    HBr: 3.5e-10 m
+    H₂S: 3.6e-10 m
+    Cyclopropane: 4.23e-10 m
+    CS₂: 3.6e-10 m
+    CF₂Cl₂: 4.4e-10 m
+    CCl₄: 5.9e-10 m
+    Propylene: 4.5e-10 m
+    Iso-C₄H₁₀: 5.0e-10 m
+    Butane-1: 4.5e-10 m
+    CF₄: 4.7e-10 m
+    SF₆: 5.5e-10 m
+    Neopentane: 6.2e-10 m
+    (C₄H₉)₃N: 8.1e-10 m
+    (C₂F₅)₂NC₃F₇: 7.7e-10 m
+    (C₄F₉)₃N: 10.2e-10 m
+    Benzene: 5.85e-10 m
+    (C₂H₅)₃N: 7.8e-10 m
+    Cyclohexane: 6.0e-10 m
+
+    :param d: Particle diameter [m]
+    :param length: Characteristic length [m]
+    :param pressure: Pressure [Pa]
+    :param temperature: Temperature [K]
+    :return: Knudsen number
+    """
+
+    return BOLTSZMANN_CONSTANT * temperature / (np.sqrt(2) * d**2 * pressure * length)

@@ -121,4 +121,4 @@ if __name__ == '__main__':
     h = horizontal_plate_down(area, perimeter, t_s, t_inf)
     print(f"Heat transfer coefficient: {h:.2f} W/m^2K")
     
-    
+
