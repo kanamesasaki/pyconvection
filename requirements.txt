@@ -2,3 +2,4 @@ pyfluids
 numpy
 matplotlib
 pandas
+pytest

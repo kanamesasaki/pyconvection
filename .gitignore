@@ -171,3 +171,6 @@ reference/
 
 # Zone.Identifier files
 *Zone.Identifier
+
+# examples
+examples/
