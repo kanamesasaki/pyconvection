@@ -11,6 +11,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy project files into the container
 COPY . /pyconvection
 
+# Install the Microsoft Core Fonts (which includes Arial)
+RUN echo "deb http://deb.debian.org/debian/ buster contrib" >> /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y ttf-mscorefonts-installer fontconfig && \
+    rm -rf /var/lib/apt/lists/* && \
+    fc-cache -f -v
+
 # Upgrade pip
 RUN pip install --upgrade pip
 
